@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMI Calculator</title>
+</head>
+<body>
+    <h1>EMI Calculator</h1>
+    <form action="calculate.jsp" method="post">
+        <label for="principal">Principal Amount:</label>
+        <input type="text" id="principal"  required><br><br>
+
+        <label for="interest">Rate of Interest (%):</label>
+        <input type="text" id="interest" required><br><br>
+
+        <label for="time">Time (in months):</label>
+        <input type="text" id="time"  required><br><br>
+
+        <input type="submit" value="Calculate EMI">
+    </form>
+</body>
+</html>

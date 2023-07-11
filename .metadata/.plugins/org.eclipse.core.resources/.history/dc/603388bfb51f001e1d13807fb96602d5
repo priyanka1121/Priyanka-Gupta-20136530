@@ -1,0 +1,17 @@
+package com;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+    public static void main(String[] args) {
+        // Load the ApplicationContext from the applicationContext.xml file
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        // Retrieve the Employee bean
+        Employee employee = (Employee) context.getBean("Employee");
+
+        // Display the Employee details
+        System.out.println(employee);
+    }
+}

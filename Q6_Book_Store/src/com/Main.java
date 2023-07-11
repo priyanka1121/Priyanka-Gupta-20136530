@@ -1,0 +1,151 @@
+package com;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Book {
+    private int isbnno;
+    private String bookName;
+    private String author;
+
+    public int getIsbnno() {
+        return isbnno;
+    }
+
+    public void setIsbnno(int isbnno) {
+        this.isbnno = isbnno;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+}
+
+class Library {
+    private ArrayList<Book> bookList = new ArrayList<>();
+
+    public void addBook(Book bobj) {
+        bookList.add(bobj);
+    }
+
+    public boolean isEmpty() {
+        return bookList.isEmpty();
+    }
+
+    public ArrayList<Book> viewAllBooks() {
+        return bookList;
+    }
+
+    public ArrayList<Book> viewBooksByAuthor(String author) {
+        ArrayList<Book> booksByAuthor = new ArrayList<>();
+        for (Book book : bookList) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
+                booksByAuthor.add(book);
+            }
+        }
+        return booksByAuthor;
+    }
+
+    public int countNoOfBook(String bname) {
+        int count = 0;
+        for (Book book : bookList) {
+            if (book.getBookName().equalsIgnoreCase(bname)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Library library = new Library();
+        Scanner scanner = new Scanner(System.in);
+
+        int choice = 0;
+        do {
+            System.out.println("1. Add Book");
+            System.out.println("2. Display all book details");
+            System.out.println("3. Search Book by author");
+            System.out.println("4. Count number of books - by book name");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+           
+            choice = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (choice) {
+                case 1:
+                    
+                    Book newBook = new Book();
+                    System.out.print("Enter the ISBN number: ");
+                    newBook.setIsbnno(scanner.nextInt());
+                    scanner.nextLine(); 
+                    System.out.print("Enter the Book Name: ");
+                    newBook.setBookName(scanner.nextLine());
+                    System.out.print("Enter the Author Name: ");
+                    newBook.setAuthor(scanner.nextLine());
+                    library.addBook(newBook);
+                    break;
+                case 2:
+                 
+                    ArrayList<Book> allBooks = library.viewAllBooks();
+                    if (allBooks.isEmpty()) {
+                        System.out.println("The list is empty");
+                    } else {
+                        for (Book book : allBooks) {
+                            System.out.println("ISBN no: " + book.getIsbnno());
+                            System.out.println("Book name: " + book.getBookName());
+                            System.out.println("Author name: " + book.getAuthor());
+                            System.out.println();
+                        }
+                    }
+                    break;
+                case 3:
+                    
+                    System.out.print("Enter the author name: ");
+                    String author = scanner.nextLine();
+                    ArrayList<Book> booksByAuthor = library.viewBooksByAuthor(author);
+                    if (booksByAuthor.isEmpty()) {
+                        System.out.println("None of the books published by the author " + author);
+                    } else {
+                        for (Book book : booksByAuthor) {
+                            System.out.println("ISBN no: " + book.getIsbnno());
+                            System.out.println("Book name: " + book.getBookName());
+                            System.out.println("Author name: " + book.getAuthor());
+                            System.out.println();
+                        }
+                    }
+                    break;
+                case 4:
+                 
+                    System.out.print("Enter the book name: ");
+                    String bookName = scanner.nextLine();
+                    int count = library.countNoOfBook(bookName);
+                    System.out.println("Count is " + count);
+                    break;
+                case 5:
+                    
+                    System.out.println("Exiting the program...");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+        } while (choice != 5);
+
+        scanner.close();
+    }
+}

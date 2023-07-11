@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define the Employee bean -->
+    <bean id="employee" class="com.example.Employee">
+        <property name="empID" value="100"/>
+        <property name="empName" value="John Doe"/>
+        <property name="programming">
+            <list>
+                <value>Java</value>
+                <value>C++</value>
+                <value>Python</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

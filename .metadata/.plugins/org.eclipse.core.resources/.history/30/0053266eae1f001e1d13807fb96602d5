@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Success</title>
+</head>
+<body>
+    <h1>Registration Success</h1>
+    <p>${Registrated sucessfully}</p>
+</body>
+</html>
